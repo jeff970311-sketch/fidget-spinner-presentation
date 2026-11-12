@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>指尖上的流行｜指尖陀螺的興起與退潮</title>
+<style>
+:root{--bg:#10141d;--panel:#1a2230;--ink:#f4f5f7;--muted:#aab4c3;--accent:#72e0d1;--old:#ffbf69}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);overflow:hidden}
+.deck{height:100%;width:100%;position:relative}.slide{display:none;min-height:100%;padding:7vh 9vw 11vh;position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,#263447 0,transparent 34%),linear-gradient(135deg,#10141d,#151d29)}
+.slide.active{display:flex;flex-direction:column;justify-content:center;animation:fade .45s ease}
+@keyframes fade{from{opacity:.2;transform:translateY(10px)}to{opacity:1;transform:none}}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-size:clamp(12px,1.4vw,17px);font-weight:700}
+h1{font-size:clamp(42px,7vw,92px);line-height:1.08;margin:18px 0 22px;max-width:950px}
+h2{font-size:clamp(34px,5vw,62px);line-height:1.12;margin:12px 0 26px}
+p,li{font-size:clamp(18px,2vw,26px);line-height:1.65;color:#dce2e9;max-width:950px}
+.sub{color:var(--muted);font-size:clamp(17px,2vw,24px)}
+.accent{color:var(--accent)}.old{color:var(--old)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:18px}
+.card{background:#ffffff0b;border:1px solid #ffffff1c;border-radius:22px;padding:24px 26px}
+.card h3{font-size:clamp(20px,2.3vw,29px);margin:0 0 10px}.card p{font-size:clamp(16px,1.65vw,21px);margin:0;color:#c6cfda}
+.big-number{font-size:clamp(64px,10vw,132px);font-weight:850;line-height:1;color:var(--old)}
+.spinner{width:190px;height:190px;margin:28px auto 0;position:relative;animation:spin 5s linear infinite}
+.spinner:before{content:"";position:absolute;inset:62px;border-radius:50%;background:linear-gradient(135deg,#ffcf7d,#f27b69);box-shadow:0 0 35px #ffbf6955}
+.spinner:after{content:"";position:absolute;inset:0;background:conic-gradient(from 0deg,transparent 0 8%,#72e0d1 8% 25%,transparent 25% 41%,#ffbf69 41% 58%,transparent 58% 74%,#72e0d1 74% 91%,transparent 91%);clip-path:polygon(50% 0,62% 35%,100% 50%,62% 65%,50% 100%,38% 65%,0 50%,38% 35%);border-radius:50%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.timeline{display:flex;align-items:stretch;gap:14px;margin-top:28px}.time{flex:1;border-top:4px solid var(--accent);padding-top:15px}.time strong{display:block;font-size:clamp(19px,2vw,25px);color:var(--old);margin-bottom:8px}.time span{color:#c6cfda;font-size:clamp(15px,1.55vw,19px);line-height:1.5}
+.quote{font-size:clamp(25px,3.5vw,44px);line-height:1.4;border-left:5px solid var(--accent);padding-left:25px;max-width:900px}
+.footer{position:absolute;bottom:28px;left:9vw;right:9vw;display:flex;justify-content:space-between;align-items:center;color:#8491a2;font-size:14px}
+.controls{position:fixed;right:24px;bottom:22px;display:flex;gap:10px;z-index:5}
+button{background:#263447;color:white;border:1px solid #ffffff33;border-radius:999px;padding:10px 17px;font-size:15px;cursor:pointer}button:hover{background:#34465d}
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--accent);width:14.28%;z-index:6;transition:width .3s}
+.note{position:absolute;right:9vw;top:7vh;color:#8794a6;font-size:14px}
+ul{padding-left:1.2em}li{margin:7px 0}
+@media(max-width:700px){.slide{padding:8vh 7vw 13vh}.grid{grid-template-columns:1fr;gap:12px}.card{padding:16px}.timeline{flex-direction:column}.time{border-top:0;border-left:3px solid var(--accent);padding:0 0 0 14px}.footer{left:7vw;right:7vw}.spinner{width:130px;height:130px}.spinner:before{inset:43px}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main class="deck">
+<section class="slide active">
+ <div class="eyebrow">A trend that once took over our hands</div>
+ <h1>指尖上的流行<br><span class="old">指尖陀螺</span>的興起與退潮</h1>
+ <p class="sub">曾經人手一顆的流行玩具，為什麼如今很少再被看見？</p>
+ <div class="spinner" aria-label="旋轉中的指尖陀螺示意圖"></div>
+ <div class="footer"><span>主題：風靡一時、如今逐漸被遺忘的事物</span><span>01 / 07</span></div>
+</section>
+<section class="slide">
+ <div class="eyebrow">01 · What was it?</div><h2>指尖陀螺是什麼？</h2>
+ <p>指尖陀螺是一種以中心軸承為核心、用手指撥動就能旋轉的小型玩具。外型有三翼、雙翼與各種造型，玩法簡單，重點就是讓它持續轉動。</p>
+ <div class="grid">
+  <div class="card"><h3 class="accent">操作簡單</h3><p>一隻手就能玩，不需要複雜規則或場地。</p></div>
+  <div class="card"><h3 class="accent">造型多變</h3><p>材質、顏色、重量與外觀都能做出不同變化。</p></div>
+ </div>
+ <div class="footer"><span>從一個簡單的旋轉動作，變成一種流行。</span><span>02 / 07</span></div>
+</section>
+<section class="slide">
+ <div class="eyebrow">02 · The peak</div><h2>曾經有多紅？</h2>
+ <div class="grid">
+  <div><div class="big-number">2017</div><p class="old">指尖陀螺在全球掀起流行熱潮的代表年份。</p></div>
+  <div class="card"><h3>那時候的日常畫面</h3><ul><li>同學之間互相比較誰轉得久</li><li>課桌、走廊、社群影片都看得到</li><li>從基本款到炫光、金屬款，各種造型都有人收藏</li></ul></div>
+ </div>
+ <p class="sub">它不只是玩具，也成為當時的話題與潮流符號。</p>
+ <div class="footer"><span>過去：熱鬧、快速、到處都看得到</span><span>03 / 07</span></div>
+</section>
+<section class="slide">
+ <div class="eyebrow">03 · Why did it become popular?</div><h2>它為什麼能爆紅？</h2>
+ <div class="grid">
+  <div class="card"><h3 class="old">低門檻</h3><p>價格與玩法相對容易入手，第一次接觸也能立刻上手。</p></div>
+  <div class="card"><h3 class="old">視覺效果</h3><p>旋轉、平衡與花式動作很適合拍成短影片分享。</p></div>
+  <div class="card"><h3 class="old">同儕帶動</h3><p>看到朋友在玩，就容易產生「我也想要一個」的心理。</p></div>
+  <div class="card"><h3 class="old">新鮮感</h3><p>不同造型與玩法帶來收集、交換和挑戰的樂趣。</p></div>
+ </div>
+ <div class="footer"><span>流行往往不只來自產品本身，也來自人與人的傳播。</span><span>04 / 07</span></div>
+</section>
+<section class="slide">
+ <div class="eyebrow">04 · The decline</div><h2>為什麼熱潮退去了？</h2>
+ <p>指尖陀螺沒有突然消失，而是逐漸失去「新鮮感」與話題性。</p>
+ <div class="timeline">
+  <div class="time"><strong>一開始</strong><span>新奇、容易上手，大家都想試試看。</span></div>
+  <div class="time"><strong>流行高峰</strong><span>款式大量出現，社群與同儕持續推波助瀾。</span></div>
+  <div class="time"><strong>熱度下降</strong><span>玩法逐漸熟悉，新的玩具與娛樂不斷出現。</span></div>
+  <div class="time"><strong>現在</strong><span>仍然買得到，但已不再是日常熱門話題。</span></div>
+ </div>
+ <p class="sub">當新鮮感消退，注意力就可能轉移到下一個流行事物。</p>
+ <div class="footer"><span>流行退潮，不代表它曾經帶來的快樂不存在。</span><span>05 / 07</span></div>
+</section>
+<section class="slide">
+ <div class="eyebrow">05 · Then & now</div><h2>過去與現在的對比</h2>
+ <div class="grid">
+  <div class="card" style="border-color:#ffbf6970;background:#ffbf6910"><h3 class="old">過去｜流行中心</h3><p>到處看得到、大家互相分享、追求新款式與旋轉技巧。</p></div>
+  <div class="card" style="border-color:#72e0d170;background:#72e0d10d"><h3 class="accent">現在｜回憶角落</h3><p>偶爾在抽屜或網路上重新看見，更多時候成為一段童年或學生時期的回憶。</p></div>
+ </div>
+ <p class="quote">「以前大家比誰轉得久，現在大家比誰還記得它。」</p>
+ <div class="footer"><span>同一個物品，在不同時間有不同意義。</span><span>06 / 07</span></div>
+</section>
+<section class="slide">
+ <div class="eyebrow">06 · Conclusion</div><h2>流行會過去，記憶會留下。</h2>
+ <p>指尖陀螺從風靡一時到逐漸淡出日常，讓我們看到流行文化的快速變化。</p>
+ <p>一項事物能夠爆紅，可能是因為新鮮感、社群傳播與同儕影響；而當新的話題出現，舊的潮流就慢慢退到記憶裡。</p>
+ <h2 class="accent" style="margin-top:22px">你還記得自己第一顆指尖陀螺嗎？</h2>
+ <p class="sub">謝謝聆聽｜Q & A</p>
+ <div class="footer"><span>指尖上的流行：指尖陀螺的興起與退潮</span><span>07 / 07</span></div>
+</section>
+</main>
+<div class="controls"><button id="prev" aria-label="上一頁">← 上一頁</button><button id="next" aria-label="下一頁">下一頁 →</button></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let index=0;
+function show(n){index=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===index));document.getElementById('progress').style.width=((index+1)/slides.length*100)+'%';}
+document.getElementById('prev').onclick=()=>show(index-1);document.getElementById('next').onclick=()=>show(index+1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();show(index+1)}if(e.key==='ArrowLeft'){show(index-1)}});
+let startX=0;document.addEventListener('touchstart',e=>startX=e.changedTouches[0].screenX,{passive:true});
+document.addEventListener('touchend',e=>{let d=e.changedTouches[0].screenX-startX;if(Math.abs(d)>60)show(index+(d<0?1:-1));},{passive:true});
+show(0);
+</script>
+</body></html>
