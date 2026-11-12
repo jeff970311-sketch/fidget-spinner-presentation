@@ -4,113 +4,403 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>指尖上的流行｜指尖陀螺的興起與退潮</title>
+<meta name="description" content="曾經人手一顆的流行玩具，為什麼如今很少再被看見？指尖陀螺的興起與退潮。">
+<meta name="theme-color" content="#0a0e16">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Cg fill='%2372e0d1'%3E%3Ccircle cy='-6.5' r='4.6'/%3E%3Ccircle cx='5.6' cy='3.25' r='4.6'/%3E%3Ccircle cx='-5.6' cy='3.25' r='4.6'/%3E%3C/g%3E%3Ccircle r='3.6' fill='%23ffbf69'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#10141d;--panel:#1a2230;--ink:#f4f5f7;--muted:#aab4c3;--accent:#72e0d1;--old:#ffbf69}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);overflow:hidden}
-.deck{height:100%;width:100%;position:relative}.slide{display:none;min-height:100%;padding:7vh 9vw 11vh;position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,#263447 0,transparent 34%),linear-gradient(135deg,#10141d,#151d29)}
-.slide.active{display:flex;flex-direction:column;justify-content:center;animation:fade .45s ease}
-@keyframes fade{from{opacity:.2;transform:translateY(10px)}to{opacity:1;transform:none}}
-.eyebrow{letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-size:clamp(12px,1.4vw,17px);font-weight:700}
-h1{font-size:clamp(42px,7vw,92px);line-height:1.08;margin:18px 0 22px;max-width:950px}
-h2{font-size:clamp(34px,5vw,62px);line-height:1.12;margin:12px 0 26px}
-p,li{font-size:clamp(18px,2vw,26px);line-height:1.65;color:#dce2e9;max-width:950px}
-.sub{color:var(--muted);font-size:clamp(17px,2vw,24px)}
-.accent{color:var(--accent)}.old{color:var(--old)}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:18px}
-.card{background:#ffffff0b;border:1px solid #ffffff1c;border-radius:22px;padding:24px 26px}
-.card h3{font-size:clamp(20px,2.3vw,29px);margin:0 0 10px}.card p{font-size:clamp(16px,1.65vw,21px);margin:0;color:#c6cfda}
-.big-number{font-size:clamp(64px,10vw,132px);font-weight:850;line-height:1;color:var(--old)}
-.spinner{width:190px;height:190px;margin:28px auto 0;position:relative;animation:spin 5s linear infinite}
-.spinner:before{content:"";position:absolute;inset:62px;border-radius:50%;background:linear-gradient(135deg,#ffcf7d,#f27b69);box-shadow:0 0 35px #ffbf6955}
-.spinner:after{content:"";position:absolute;inset:0;background:conic-gradient(from 0deg,transparent 0 8%,#72e0d1 8% 25%,transparent 25% 41%,#ffbf69 41% 58%,transparent 58% 74%,#72e0d1 74% 91%,transparent 91%);clip-path:polygon(50% 0,62% 35%,100% 50%,62% 65%,50% 100%,38% 65%,0 50%,38% 35%);border-radius:50%}
+:root{
+  --bg:#0a0e16;--ink:#f3f5f8;--body:#cdd5df;--muted:#8793a6;--line:#ffffff1f;
+  --teal:#72e0d1;--amber:#ffbf69;--coral:#f27b69;
+  --u:min(1vw,1.78vh);
+  --pad-x:8vw;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+  --latin:"Space Grotesk","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+
+/* ── 背景 ───────────────────────── */
+.bg{position:fixed;inset:0;z-index:0;background:
+  radial-gradient(70vmax 60vmax at 88% 8%,#1b2940 0,transparent 62%),
+  radial-gradient(60vmax 50vmax at 0% 105%,#16222f 0,transparent 60%),
+  var(--bg)}
+.bg i{position:absolute;inset:0;display:block}
+.bg .warm{opacity:.4;transition:opacity 1.4s ease;background:
+  radial-gradient(60vmax 52vmax at 22% 58%,#ffbf6926 0,transparent 62%),
+  radial-gradient(46vmax 40vmax at 92% 96%,#f27b6920 0,transparent 60%)}
+.bg .grid{background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:calc(var(--u)*6) calc(var(--u)*6);
+  -webkit-mask-image:radial-gradient(ellipse 75% 70% at 70% 40%,#000 0,transparent 75%);mask-image:radial-gradient(ellipse 75% 70% at 70% 40%,#000 0,transparent 75%)}
+.bg .grain{opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ── 貫穿全場的指尖陀螺 ───────────── */
+#spinner{position:fixed;left:0;top:0;z-index:1;width:var(--s,50vmin);height:var(--s,50vmin);opacity:var(--o,1);
+  transform:translate(calc(var(--x,75vw) - 50%),calc(var(--y,52vh) - 50%));
+  transition:transform 1.15s cubic-bezier(.65,0,.2,1),width 1.15s cubic-bezier(.65,0,.2,1),height 1.15s cubic-bezier(.65,0,.2,1),opacity .9s ease;
+  overflow:visible;pointer-events:none;will-change:transform}
+#rotor{pointer-events:auto;cursor:pointer}
+
+/* ── 投影片 ─────────────────────── */
+.deck{position:fixed;inset:0;z-index:2;pointer-events:none}
+.slide{position:absolute;inset:0;padding:calc(var(--u)*5.5 + 30px) var(--pad-x) calc(var(--u)*5 + 52px);
+  display:flex;flex-direction:column;justify-content:safe center;
+  opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s .4s}
+.slide.active{opacity:1;visibility:visible;transition:opacity .5s ease .12s}
+.slide.active>*{pointer-events:auto;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.slide.active>*:nth-child(2){animation-delay:.08s}
+.slide.active>*:nth-child(3){animation-delay:.16s}
+.slide.active>*:nth-child(4){animation-delay:.24s}
+.slide.active>*:nth-child(5){animation-delay:.32s}
+.slide.active>*:nth-child(6){animation-delay:.4s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.slide.col>*{max-width:56%}
+
+.eyebrow{display:flex;align-items:center;gap:1em;font-family:var(--latin);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);font-size:clamp(11px,calc(var(--u)*1.05),20px)}
+.eyebrow::before{content:"";flex:none;width:2.8em;height:2px;background:currentColor;border-radius:2px}
+h1,h2{font-family:var(--serif);font-weight:900;text-wrap:balance;letter-spacing:.01em}
+h1{font-size:clamp(38px,calc(var(--u)*6.5),132px);line-height:1.16;margin:.32em 0 .38em}
+h2{font-size:clamp(30px,calc(var(--u)*4.3),90px);line-height:1.2;margin:.3em 0 .5em}
+p,li{font-size:clamp(16px,calc(var(--u)*1.7),34px);line-height:1.75;color:var(--body);margin:0;text-wrap:pretty}
+.sub{color:var(--muted);margin-top:calc(var(--u)*2)}
+.teal{color:var(--teal)}.amber{color:var(--amber)}
+.grad{background:linear-gradient(100deg,var(--amber) 10%,var(--coral) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-cool{background:linear-gradient(100deg,#a8f3e8,var(--teal) 60%,#49bfb0);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,calc(var(--u)*1.6),32px);margin-top:calc(var(--u)*2.2)}
+.card{position:relative;overflow:hidden;background:linear-gradient(155deg,#ffffff14,#ffffff06 60%);border:1px solid var(--line);border-radius:clamp(14px,calc(var(--u)*1.5),30px);
+  padding:clamp(15px,calc(var(--u)*1.75),38px) clamp(16px,calc(var(--u)*2),42px);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.card::before{content:"";position:absolute;left:0;top:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ffffff55,transparent)}
+.card h3{font-size:clamp(18px,calc(var(--u)*2.05),42px);line-height:1.3;margin:0 0 .4em;font-weight:700}
+.card p,.card li{font-size:clamp(15px,calc(var(--u)*1.45),29px);line-height:1.65;color:#bac4d1}
+
+/* 封面 */
+.keys{display:flex;flex-wrap:wrap;align-items:center;gap:.5em;margin-top:calc(var(--u)*3.2);font-size:clamp(12px,calc(var(--u)*1.05),20px);color:var(--muted)}
+.keys kbd{font-family:var(--latin);font-size:.92em;min-width:2em;text-align:center;padding:.22em .55em;border:1px solid #ffffff2e;border-bottom-width:2px;border-radius:.5em;color:#c3ccd8;background:#ffffff0a}
+.keys span{margin-right:.9em}
+
+/* 02 高峰 */
+.peak{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:calc(var(--u)*4)}
+.year{font-family:var(--latin);font-weight:700;font-size:clamp(84px,calc(var(--u)*15.5),320px);line-height:.95;letter-spacing:-.03em;font-variant-numeric:tabular-nums;filter:drop-shadow(0 .06em .5em #ffbf6940)}
+.peak .cap{margin-top:.5em;color:var(--amber)}
+ul{list-style:none;padding:0;margin:0}
+li{position:relative;padding-left:1.5em;margin:.35em 0}
+li::before{content:"";position:absolute;left:.2em;top:.62em;width:.46em;height:.46em;border-radius:50%;background:var(--amber);box-shadow:0 0 0 .24em #ffbf6930}
+
+/* 03 原因 */
+.why .card{padding-right:clamp(60px,calc(var(--u)*8),170px)}
+.why .card i{position:absolute;right:.32em;top:.02em;font:700 clamp(46px,calc(var(--u)*6.4),130px)/1 var(--latin);font-style:normal;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px #ffbf6950}
+.why .card h3{color:var(--amber)}
+
+/* 04 退潮曲線 */
+.curve{position:relative;height:clamp(96px,calc(var(--u)*11),240px);margin-top:calc(var(--u)*2.2)}
+.curve svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.active .curve svg{animation:draw 1.9s cubic-bezier(.5,0,.2,1) .35s both}
+@keyframes draw{from{clip-path:inset(-20% 100% -20% 0)}to{clip-path:inset(-20% 0 -20% 0)}}
+.curve b{position:absolute;left:var(--px);top:var(--py);bottom:0;width:1px;background:linear-gradient(var(--c),transparent)}
+.curve b::before{content:"";position:absolute;left:50%;top:0;width:calc(var(--u)*1.15 + 4px);aspect-ratio:1;border-radius:50%;translate:-50% -50%;background:var(--c);box-shadow:0 0 0 .32em color-mix(in srgb,var(--c) 22%,transparent),0 0 1.4em var(--c)}
+.active .curve b{animation:pop .5s ease both;animation-delay:calc(.55s + var(--i)*.38s)}
+@keyframes pop{from{opacity:0}to{opacity:1}}
+.curve .tag{position:absolute;right:0;top:0;font-size:clamp(10px,calc(var(--u)*.92),17px);letter-spacing:.18em;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:.3em .9em}
+.stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:calc(var(--u)*1.2)}
+.stages div{text-align:center;padding:0 .8em}
+.stages strong{display:block;font-size:clamp(17px,calc(var(--u)*1.85),38px);color:var(--c);margin-bottom:.25em}
+.stages span{display:block;text-wrap:balance;font-size:clamp(14px,calc(var(--u)*1.32),27px);line-height:1.6;color:#bac4d1}
+
+/* 05 對比 */
+.versus{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:clamp(10px,calc(var(--u)*1.5),30px);margin-top:calc(var(--u)*.6)}
+.versus .card{border-color:color-mix(in srgb,var(--c) 45%,transparent);background:linear-gradient(155deg,color-mix(in srgb,var(--c) 15%,transparent),color-mix(in srgb,var(--c) 4%,transparent) 70%)}
+.versus .lab{display:block;font-family:var(--latin);font-weight:700;letter-spacing:.24em;font-size:clamp(11px,calc(var(--u)*1),19px);color:var(--c);opacity:.85;margin-bottom:.7em}
+.versus h3{color:var(--c)}
+.versus .arrow{align-self:center;display:grid;place-items:center;width:clamp(34px,calc(var(--u)*3.6),72px);aspect-ratio:1;border-radius:50%;border:1px solid var(--line);color:var(--muted);background:#ffffff08}
+.versus .arrow svg{width:46%;height:46%}
+.quote{font-family:var(--serif);font-weight:700;font-size:clamp(20px,calc(var(--u)*2.7),58px);line-height:1.5;color:var(--ink);margin-top:calc(var(--u)*2.8);padding-left:1em;border-left:3px solid var(--teal)}
+
+/* 06 結語 */
+.ask{font-size:clamp(24px,calc(var(--u)*3.1),66px);margin:.9em 0 .5em}
+.thanks{display:flex;align-items:center;gap:1em;color:var(--muted)}
+.thanks em{font-style:normal;font-family:var(--latin);font-weight:700;letter-spacing:.14em;font-size:.82em;color:var(--teal);border:1px solid #72e0d155;border-radius:99px;padding:.18em 1em}
+.slide .spin-hint{position:absolute;left:76vw;top:calc(48vh + 25vmin);translate:-50% 0;max-width:none;white-space:nowrap;font-size:clamp(12px,calc(var(--u)*1.1),22px);letter-spacing:.12em;color:var(--muted)}
+.spin-hint::before{content:"↑";display:block;text-align:center;margin-bottom:.2em;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(-5px)}}
+
+/* ── 上下工具列 ─────────────────── */
+.top,.bottom{position:fixed;left:0;right:0;z-index:5;display:flex;align-items:center;padding:0 var(--pad-x);pointer-events:none}
+.top{top:0;height:calc(var(--u)*4 + 26px);justify-content:space-between;font-family:var(--latin);font-size:clamp(11px,calc(var(--u)*1),18px);letter-spacing:.16em;color:var(--muted)}
+.brand{display:flex;align-items:center;gap:.7em}
+.brand svg{width:1.5em;height:1.5em;animation:spin 6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.timeline{display:flex;align-items:stretch;gap:14px;margin-top:28px}.time{flex:1;border-top:4px solid var(--accent);padding-top:15px}.time strong{display:block;font-size:clamp(19px,2vw,25px);color:var(--old);margin-bottom:8px}.time span{color:#c6cfda;font-size:clamp(15px,1.55vw,19px);line-height:1.5}
-.quote{font-size:clamp(25px,3.5vw,44px);line-height:1.4;border-left:5px solid var(--accent);padding-left:25px;max-width:900px}
-.footer{position:absolute;bottom:28px;left:9vw;right:9vw;display:flex;justify-content:space-between;align-items:center;color:#8491a2;font-size:14px}
-.controls{position:fixed;right:24px;bottom:22px;display:flex;gap:10px;z-index:5}
-button{background:#263447;color:white;border:1px solid #ffffff33;border-radius:999px;padding:10px 17px;font-size:15px;cursor:pointer}button:hover{background:#34465d}
-.progress{position:fixed;top:0;left:0;height:4px;background:var(--accent);width:14.28%;z-index:6;transition:width .3s}
-.note{position:absolute;right:9vw;top:7vh;color:#8794a6;font-size:14px}
-ul{padding-left:1.2em}li{margin:7px 0}
-@media(max-width:700px){.slide{padding:8vh 7vw 13vh}.grid{grid-template-columns:1fr;gap:12px}.card{padding:16px}.timeline{flex-direction:column}.time{border-top:0;border-left:3px solid var(--accent);padding:0 0 0 14px}.footer{left:7vw;right:7vw}.spinner{width:130px;height:130px}.spinner:before{inset:43px}}
+.count b{color:var(--ink);font-weight:700}
+.bottom{bottom:0;height:calc(var(--u)*4 + 34px);gap:clamp(12px,calc(var(--u)*2),40px)}
+.bottom>*{pointer-events:auto}
+.segs{display:flex;gap:5px}
+.segs button{position:relative;width:clamp(16px,calc(var(--u)*2.6),52px);height:22px;padding:0;border:0;background:none;cursor:pointer}
+.segs button::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;border-radius:3px;background:#ffffff26;transition:background .4s,height .2s,margin .2s}
+.segs button.on::before{background:var(--teal)}
+.segs button.cur::before{background:linear-gradient(90deg,var(--teal),var(--amber))}
+.segs button:hover::before{height:5px;margin-top:-2.5px}
+.note{flex:1;min-width:0;font-size:clamp(12px,calc(var(--u)*1.08),21px);line-height:1.4;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:opacity .3s}
+.nav{display:flex;gap:8px}
+.nav button{display:grid;place-items:center;width:clamp(38px,calc(var(--u)*3.3),64px);aspect-ratio:1;padding:0;border-radius:50%;border:1px solid #ffffff2b;background:#ffffff0d;color:var(--ink);cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:background .2s,border-color .2s,transform .15s,opacity .2s}
+.nav button svg{width:40%;height:40%}
+.nav button:hover{background:#72e0d122;border-color:#72e0d188}
+.nav button:active{transform:scale(.93)}
+.nav button:disabled{opacity:.3;cursor:default;background:#ffffff0d;border-color:#ffffff2b}
+button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+/* ── 手機 ───────────────────────── */
+@media(max-width:760px){
+  :root{--pad-x:6.5vw}
+  .slide{padding-top:74px;padding-bottom:78px;overflow-y:auto}
+  .slide.col>*{max-width:100%}
+  .slide.hero{padding-bottom:44vh}
+  .grid2,.peak{grid-template-columns:1fr}
+  .peak{gap:16px}
+  .versus{grid-template-columns:1fr}
+  .versus .arrow{justify-self:center;rotate:90deg}
+  .stages{grid-template-columns:1fr 1fr;gap:14px 0}
+  .stages div{text-align:left;padding:0 .8em 0 0}
+  .curve b{display:none}
+  .keys,.spin-hint,.note{display:none}
+  .bottom{justify-content:space-between}
+  .sub{margin-top:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .slide.active>*,.active .curve svg,.active .curve b,.brand svg,.spin-hint::before{animation:none}
+  #spinner{transition:opacity .3s}
+}
 </style>
 </head>
 <body>
-<div class="progress" id="progress"></div>
+
+<div class="bg" aria-hidden="true"><i class="warm" id="warm"></i><i class="grid"></i><i class="grain"></i></div>
+
+<svg id="spinner" viewBox="-110 -110 220 220" aria-hidden="true">
+  <defs>
+    <linearGradient id="spBody" gradientUnits="userSpaceOnUse" x1="-90" y1="-100" x2="90" y2="100">
+      <stop offset="0" stop-color="#a6f6ea"/><stop offset=".5" stop-color="#52cbbb"/><stop offset="1" stop-color="#1e7f75"/>
+    </linearGradient>
+    <radialGradient id="spCap" cx=".35" cy=".3" r=".9">
+      <stop offset="0" stop-color="#ffe7b5"/><stop offset=".5" stop-color="#ffbf69"/><stop offset="1" stop-color="#f27b69"/>
+    </radialGradient>
+    <linearGradient id="spSteel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f7fa"/><stop offset=".5" stop-color="#9aa6b5"/><stop offset="1" stop-color="#dfe5ec"/>
+    </linearGradient>
+    <radialGradient id="spHalo">
+      <stop offset=".35" stop-color="#72e0d1" stop-opacity=".2"/><stop offset="1" stop-color="#72e0d1" stop-opacity="0"/>
+    </radialGradient>
+    <g id="spBearing">
+      <circle r="26.5" fill="#0b1019"/><circle r="23.5" fill="url(#spSteel)"/><circle r="15" fill="#0b1019"/><circle r="9.5" fill="url(#spSteel)"/><circle r="3.6" fill="#0b1019"/>
+    </g>
+  </defs>
+  <circle r="110" fill="url(#spHalo)"/>
+  <g id="blur" opacity="0">
+    <circle r="62" fill="none" stroke="#72e0d1" stroke-width="76" stroke-opacity=".3"/>
+    <circle r="62" fill="none" stroke="#e3e9ef" stroke-width="46" stroke-opacity=".15"/>
+    <circle r="62" fill="none" stroke="#0b1019" stroke-width="26" stroke-opacity=".3"/>
+  </g>
+  <g id="rotor">
+    <g stroke="url(#spBody)" stroke-width="46" stroke-linecap="round">
+      <line x2="0" y2="-62"/><line x2="53.7" y2="31"/><line x2="-53.7" y2="31"/>
+    </g>
+    <g fill="url(#spBody)">
+      <circle cy="-62" r="38"/><circle cx="53.7" cy="31" r="38"/><circle cx="-53.7" cy="31" r="38"/><circle r="36"/>
+    </g>
+    <g fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.2">
+      <circle cy="-62" r="33"/><circle cx="53.7" cy="31" r="33"/><circle cx="-53.7" cy="31" r="33"/>
+    </g>
+    <use href="#spBearing" y="-62"/><use href="#spBearing" x="53.7" y="31"/><use href="#spBearing" x="-53.7" y="31"/>
+    <circle r="28" fill="#0b1019"/>
+    <circle r="24" fill="url(#spCap)"/>
+    <circle r="24" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="1"/>
+    <ellipse cx="-7" cy="-9" rx="9" ry="5" fill="#fff" fill-opacity=".35" transform="rotate(-35 -7 -9)"/>
+  </g>
+</svg>
+
+<header class="top">
+  <div class="brand">
+    <svg viewBox="-12 -12 24 24" aria-hidden="true"><g fill="#72e0d1"><circle cy="-6.5" r="4.4"/><circle cx="5.6" cy="3.25" r="4.4"/><circle cx="-5.6" cy="3.25" r="4.4"/></g><circle r="3.5" fill="#ffbf69"/></svg>
+    <span>指尖上的流行</span>
+  </div>
+  <div class="count"><b id="cur">01</b> / <span id="total">07</span></div>
+</header>
+
 <main class="deck">
-<section class="slide active">
- <div class="eyebrow">A trend that once took over our hands</div>
- <h1>指尖上的流行<br><span class="old">指尖陀螺</span>的興起與退潮</h1>
- <p class="sub">曾經人手一顆的流行玩具，為什麼如今很少再被看見？</p>
- <div class="spinner" aria-label="旋轉中的指尖陀螺示意圖"></div>
- <div class="footer"><span>主題：風靡一時、如今逐漸被遺忘的事物</span><span>01 / 07</span></div>
+
+<section class="slide col hero active" data-sp="75vw,52vh,52vmin,1" data-spm="50vw,74vh,52vmin,1" data-speed="220" data-gray="0" data-warm=".45"
+         data-note="主題：風靡一時、如今逐漸被遺忘的事物">
+  <div class="eyebrow">A trend that once took over our hands</div>
+  <h1>指尖上的流行<br><span class="grad">指尖陀螺</span>的<br>興起與退潮</h1>
+  <p class="sub" style="margin-top:0">曾經人手一顆的流行玩具，為什麼如今很少再被看見？</p>
+  <div class="keys"><kbd>←</kbd><kbd>→</kbd><span>翻頁</span><kbd>F</kbd><span>全螢幕</span><span>點一下陀螺讓它轉</span></div>
 </section>
-<section class="slide">
- <div class="eyebrow">01 · What was it?</div><h2>指尖陀螺是什麼？</h2>
- <p>指尖陀螺是一種以中心軸承為核心、用手指撥動就能旋轉的小型玩具。外型有三翼、雙翼與各種造型，玩法簡單，重點就是讓它持續轉動。</p>
- <div class="grid">
-  <div class="card"><h3 class="accent">操作簡單</h3><p>一隻手就能玩，不需要複雜規則或場地。</p></div>
-  <div class="card"><h3 class="accent">造型多變</h3><p>材質、顏色、重量與外觀都能做出不同變化。</p></div>
- </div>
- <div class="footer"><span>從一個簡單的旋轉動作，變成一種流行。</span><span>02 / 07</span></div>
+
+<section class="slide col" data-sp="77vw,52vh,46vmin,1" data-speed="45" data-gray="0" data-warm=".3"
+         data-note="從一個簡單的旋轉動作，變成一種流行。">
+  <div class="eyebrow">01 · What was it?</div>
+  <h2>指尖陀螺是什麼？</h2>
+  <p>指尖陀螺是一種以中心軸承為核心、用手指撥動就能旋轉的小型玩具。外型有三翼、雙翼與各種造型，玩法簡單，重點就是讓它持續轉動。</p>
+  <div class="grid2">
+    <div class="card"><h3 class="teal">操作簡單</h3><p>一隻手就能玩，不需要複雜規則或場地。</p></div>
+    <div class="card"><h3 class="teal">造型多變</h3><p>材質、顏色、重量與外觀都能做出不同變化。</p></div>
+  </div>
 </section>
-<section class="slide">
- <div class="eyebrow">02 · The peak</div><h2>曾經有多紅？</h2>
- <div class="grid">
-  <div><div class="big-number">2017</div><p class="old">指尖陀螺在全球掀起流行熱潮的代表年份。</p></div>
-  <div class="card"><h3>那時候的日常畫面</h3><ul><li>同學之間互相比較誰轉得久</li><li>課桌、走廊、社群影片都看得到</li><li>從基本款到炫光、金屬款，各種造型都有人收藏</li></ul></div>
- </div>
- <p class="sub">它不只是玩具，也成為當時的話題與潮流符號。</p>
- <div class="footer"><span>過去：熱鬧、快速、到處都看得到</span><span>03 / 07</span></div>
+
+<section class="slide" data-sp="27vw,57vh,66vmin,.5" data-spm="50vw,34vh,84vmin,.3" data-speed="900" data-gray="0" data-warm="1"
+         data-note="過去：熱鬧、快速、到處都看得到">
+  <div class="eyebrow">02 · The peak</div>
+  <h2>曾經有多紅？</h2>
+  <div class="peak">
+    <div><div class="year grad">2017</div><p class="cap">指尖陀螺在全球掀起流行熱潮的代表年份。</p></div>
+    <div class="card"><h3>那時候的日常畫面</h3>
+      <ul><li>同學之間互相比較誰轉得久</li><li>課桌、走廊、社群影片都看得到</li><li>從基本款到炫光、金屬款，各種造型都有人收藏</li></ul>
+    </div>
+  </div>
+  <p class="sub">它不只是玩具，也成為當時的話題與潮流符號。</p>
 </section>
-<section class="slide">
- <div class="eyebrow">03 · Why did it become popular?</div><h2>它為什麼能爆紅？</h2>
- <div class="grid">
-  <div class="card"><h3 class="old">低門檻</h3><p>價格與玩法相對容易入手，第一次接觸也能立刻上手。</p></div>
-  <div class="card"><h3 class="old">視覺效果</h3><p>旋轉、平衡與花式動作很適合拍成短影片分享。</p></div>
-  <div class="card"><h3 class="old">同儕帶動</h3><p>看到朋友在玩，就容易產生「我也想要一個」的心理。</p></div>
-  <div class="card"><h3 class="old">新鮮感</h3><p>不同造型與玩法帶來收集、交換和挑戰的樂趣。</p></div>
- </div>
- <div class="footer"><span>流行往往不只來自產品本身，也來自人與人的傳播。</span><span>04 / 07</span></div>
+
+<section class="slide" data-sp="88vw,18vh,20vmin,.95" data-speed="560" data-gray="0" data-warm=".7"
+         data-note="流行往往不只來自產品本身，也來自人與人的傳播。">
+  <div class="eyebrow">03 · Why did it become popular?</div>
+  <h2>它為什麼能爆紅？</h2>
+  <div class="grid2 why" style="margin-top:0">
+    <div class="card"><i>01</i><h3>低門檻</h3><p>價格與玩法相對容易入手，第一次接觸也能立刻上手。</p></div>
+    <div class="card"><i>02</i><h3>視覺效果</h3><p>旋轉、平衡與花式動作很適合拍成短影片分享。</p></div>
+    <div class="card"><i>03</i><h3>同儕帶動</h3><p>看到朋友在玩，就容易產生「我也想要一個」的心理。</p></div>
+    <div class="card"><i>04</i><h3>新鮮感</h3><p>不同造型與玩法帶來收集、交換和挑戰的樂趣。</p></div>
+  </div>
 </section>
-<section class="slide">
- <div class="eyebrow">04 · The decline</div><h2>為什麼熱潮退去了？</h2>
- <p>指尖陀螺沒有突然消失，而是逐漸失去「新鮮感」與話題性。</p>
- <div class="timeline">
-  <div class="time"><strong>一開始</strong><span>新奇、容易上手，大家都想試試看。</span></div>
-  <div class="time"><strong>流行高峰</strong><span>款式大量出現，社群與同儕持續推波助瀾。</span></div>
-  <div class="time"><strong>熱度下降</strong><span>玩法逐漸熟悉，新的玩具與娛樂不斷出現。</span></div>
-  <div class="time"><strong>現在</strong><span>仍然買得到，但已不再是日常熱門話題。</span></div>
- </div>
- <p class="sub">當新鮮感消退，注意力就可能轉移到下一個流行事物。</p>
- <div class="footer"><span>流行退潮，不代表它曾經帶來的快樂不存在。</span><span>05 / 07</span></div>
+
+<section class="slide" data-sp="88vw,18vh,20vmin,.9" data-speed="150" data-gray=".25" data-warm=".35"
+         data-note="流行退潮，不代表它曾經帶來的快樂不存在。">
+  <div class="eyebrow">04 · The decline</div>
+  <h2>為什麼熱潮退去了？</h2>
+  <p>指尖陀螺沒有突然消失，而是逐漸失去「新鮮感」與話題性。</p>
+  <div>
+    <div class="curve" aria-hidden="true">
+      <svg viewBox="0 0 1000 220" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="cvStroke" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#ffbf69"/><stop offset=".4" stop-color="#f27b69"/><stop offset=".72" stop-color="#8fb7b6"/><stop offset="1" stop-color="#72e0d1"/></linearGradient>
+          <linearGradient id="cvFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffbf69" stop-opacity=".26"/><stop offset="1" stop-color="#ffbf69" stop-opacity="0"/></linearGradient>
+        </defs>
+        <path d="M0,205 C60,200 90,180 125,150 S300,25 375,25 S560,100 625,140 S800,182 875,188 S960,193 1000,195 L1000,220 L0,220Z" fill="url(#cvFill)"/>
+        <path d="M0,205 C60,200 90,180 125,150 S300,25 375,25 S560,100 625,140 S800,182 875,188 S960,193 1000,195" fill="none" stroke="url(#cvStroke)" stroke-width="3.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <b style="--px:12.5%;--py:68.2%;--c:#ffbf69;--i:0"></b>
+      <b style="--px:37.5%;--py:11.4%;--c:#f27b69;--i:1"></b>
+      <b style="--px:62.5%;--py:63.6%;--c:#9db9bb;--i:2"></b>
+      <b style="--px:87.5%;--py:85.5%;--c:#72e0d1;--i:3"></b>
+      <span class="tag">熱度示意</span>
+    </div>
+    <div class="stages">
+      <div style="--c:#ffbf69"><strong>一開始</strong><span>新奇、容易上手，大家都想試試看。</span></div>
+      <div style="--c:#f27b69"><strong>流行高峰</strong><span>款式大量出現，社群與同儕持續推波助瀾。</span></div>
+      <div style="--c:#9db9bb"><strong>熱度下降</strong><span>玩法逐漸熟悉，新的玩具與娛樂不斷出現。</span></div>
+      <div style="--c:#72e0d1"><strong>現在</strong><span>仍然買得到，但已不再是日常熱門話題。</span></div>
+    </div>
+  </div>
+  <p class="sub">當新鮮感消退，注意力就可能轉移到下一個流行事物。</p>
 </section>
-<section class="slide">
- <div class="eyebrow">05 · Then & now</div><h2>過去與現在的對比</h2>
- <div class="grid">
-  <div class="card" style="border-color:#ffbf6970;background:#ffbf6910"><h3 class="old">過去｜流行中心</h3><p>到處看得到、大家互相分享、追求新款式與旋轉技巧。</p></div>
-  <div class="card" style="border-color:#72e0d170;background:#72e0d10d"><h3 class="accent">現在｜回憶角落</h3><p>偶爾在抽屜或網路上重新看見，更多時候成為一段童年或學生時期的回憶。</p></div>
- </div>
- <p class="quote">「以前大家比誰轉得久，現在大家比誰還記得它。」</p>
- <div class="footer"><span>同一個物品，在不同時間有不同意義。</span><span>06 / 07</span></div>
+
+<section class="slide" data-sp="88vw,18vh,20vmin,.85" data-speed="14" data-gray=".8" data-warm=".1"
+         data-note="同一個物品，在不同時間有不同意義。">
+  <div class="eyebrow">05 · Then &amp; now</div>
+  <h2>過去與現在的對比</h2>
+  <div class="versus">
+    <div class="card" style="--c:#ffbf69"><span class="lab">THEN</span><h3>過去｜流行中心</h3><p>到處看得到、大家互相分享、追求新款式與旋轉技巧。</p></div>
+    <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+    <div class="card" style="--c:#72e0d1"><span class="lab">NOW</span><h3>現在｜回憶角落</h3><p>偶爾在抽屜或網路上重新看見，更多時候成為一段童年或學生時期的回憶。</p></div>
+  </div>
+  <p class="quote">「以前大家比誰轉得久，現在大家比誰還記得它。」</p>
 </section>
-<section class="slide">
- <div class="eyebrow">06 · Conclusion</div><h2>流行會過去，記憶會留下。</h2>
- <p>指尖陀螺從風靡一時到逐漸淡出日常，讓我們看到流行文化的快速變化。</p>
- <p>一項事物能夠爆紅，可能是因為新鮮感、社群傳播與同儕影響；而當新的話題出現，舊的潮流就慢慢退到記憶裡。</p>
- <h2 class="accent" style="margin-top:22px">你還記得自己第一顆指尖陀螺嗎？</h2>
- <p class="sub">謝謝聆聽｜Q & A</p>
- <div class="footer"><span>指尖上的流行：指尖陀螺的興起與退潮</span><span>07 / 07</span></div>
+
+<section class="slide col hero" data-sp="76vw,48vh,44vmin,1" data-spm="50vw,76vh,46vmin,1" data-speed="0" data-gray=".75" data-warm="0"
+         data-note="指尖上的流行：指尖陀螺的興起與退潮">
+  <div class="eyebrow">06 · Conclusion</div>
+  <h2>流行會過去，<br>記憶會留下。</h2>
+  <p>指尖陀螺從風靡一時到逐漸淡出日常，讓我們看到流行文化的快速變化。一項事物能夠爆紅，可能是因為新鮮感、社群傳播與同儕影響；而當新的話題出現，舊的潮流就慢慢退到記憶裡。</p>
+  <h2 class="ask grad-cool">你還記得自己第一顆指尖陀螺嗎？</h2>
+  <p class="thanks">謝謝聆聽 <em>Q &amp; A</em></p>
+  <div class="spin-hint">點一下，讓它再轉一次</div>
 </section>
+
 </main>
-<div class="controls"><button id="prev" aria-label="上一頁">← 上一頁</button><button id="next" aria-label="下一頁">下一頁 →</button></div>
+
+<footer class="bottom">
+  <div class="segs" id="segs"></div>
+  <p class="note" id="note"></p>
+  <div class="nav">
+    <button id="prev" type="button" aria-label="上一頁"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button id="next" type="button" aria-label="下一頁"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</footer>
+
 <script>
-const slides=[...document.querySelectorAll('.slide')];let index=0;
-function show(n){index=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===index));document.getElementById('progress').style.width=((index+1)/slides.length*100)+'%';}
-document.getElementById('prev').onclick=()=>show(index-1);document.getElementById('next').onclick=()=>show(index+1);
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();show(index+1)}if(e.key==='ArrowLeft'){show(index-1)}});
-let startX=0;document.addEventListener('touchstart',e=>startX=e.changedTouches[0].screenX,{passive:true});
-document.addEventListener('touchend',e=>{let d=e.changedTouches[0].screenX-startX;if(Math.abs(d)>60)show(index+(d<0?1:-1));},{passive:true});
-show(0);
+const slides=[...document.querySelectorAll('.slide')],N=slides.length;
+const $=id=>document.getElementById(id);
+const sp=$('spinner'),rotor=$('rotor'),blur=$('blur'),segs=$('segs'),note=$('note'),warm=$('warm');
+const mq=matchMedia('(max-width:760px)'),calm=matchMedia('(prefers-reduced-motion:reduce)');
+const pad=n=>String(n).padStart(2,'0');
+const MOBILE='84vw,13vh,28vmin,.4';
+let index=0;
+
+$('total').textContent=pad(N);
+slides.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','第 '+(i+1)+' 頁');b.onclick=()=>show(i);segs.appendChild(b);});
+
+/* 陀螺轉速 = 這一頁的「熱度」：高峰最快，結尾停下來 */
+let ang=0,om=0,target=0,baseGray=0,gray=-1,last=performance.now();
+function tick(t){
+  const dt=Math.min(.05,(t-last)/1000);last=t;
+  const k=Math.abs(om)<Math.abs(target)?3:.6;           // 加速快、減速像真的陀螺慢慢停
+  om+=(target-om)*(1-Math.exp(-k*dt));
+  ang=(ang+om*dt)%360;
+  rotor.setAttribute('transform','rotate('+ang.toFixed(2)+')');
+  const b=Math.max(0,Math.min(1,(Math.abs(om)-380)/650));
+  blur.style.opacity=b;rotor.style.opacity=1-.5*b;
+  const g=baseGray*(1-Math.min(1,Math.abs(om)/260));
+  if(Math.abs(g-gray)>.01){gray=g;sp.style.filter=g>.01?'grayscale('+g.toFixed(2)+')':'none';}
+  requestAnimationFrame(tick);
+}
+rotor.addEventListener('pointerdown',()=>{om=Math.min(om+1100,2000);});
+
+function show(n){
+  index=Math.max(0,Math.min(N-1,n));
+  const s=slides[index],d=s.dataset;
+  slides.forEach((el,i)=>{el.classList.toggle('active',i===index);el.setAttribute('aria-hidden',i!==index);});
+  [...segs.children].forEach((b,i)=>{b.classList.toggle('on',i<index);b.classList.toggle('cur',i===index);});
+  $('cur').textContent=pad(index+1);
+  note.textContent=d.note||'';
+  $('prev').disabled=index===0;$('next').disabled=index===N-1;
+  const [x,y,size,o]=(mq.matches?(d.spm||MOBILE):d.sp).split(',');
+  sp.style.setProperty('--x',x);sp.style.setProperty('--y',y);sp.style.setProperty('--s',size);sp.style.setProperty('--o',o);
+  target=(+d.speed||0)*(calm.matches?.25:1);
+  baseGray=+d.gray||0;
+  warm.style.opacity=d.warm||0;
+  if(location.hash!=='#'+(index+1))history.replaceState(null,'','#'+(index+1));
+}
+
+$('prev').onclick=()=>show(index-1);
+$('next').onclick=()=>show(index+1);
+document.addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  const k=e.key;
+  if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(k)){e.preventDefault();show(index+1);}
+  else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(k)){e.preventDefault();show(index-1);}
+  else if(k==='Home')show(0);
+  else if(k==='End')show(N-1);
+  else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();}
+});
+let sx=0,sy=0;
+document.addEventListener('touchstart',e=>{sx=e.changedTouches[0].screenX;sy=e.changedTouches[0].screenY;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-sx,dy=e.changedTouches[0].screenY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)show(index+(dx<0?1:-1));},{passive:true});
+addEventListener('hashchange',()=>{const n=parseInt(location.hash.slice(1),10);if(n&&n-1!==index)show(n-1);});
+mq.addEventListener('change',()=>show(index));
+
+show((parseInt(location.hash.slice(1),10)||1)-1);
+om=target;
+requestAnimationFrame(tick);
 </script>
-</body></html>
+</body>
+</html>
